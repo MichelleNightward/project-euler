@@ -4,23 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {MultiplesOf3And5Component} from "./solutions/multiples-of-3-and-5/multiples-of-3-and-5.component";
-import {EvenFibonacciNumbersComponent} from "./solutions/even-fibonacci-numbers/even-fibonacci-numbers.component";
-import {LargestPrimeFactorComponent} from "./solutions/largest-prime-factor/largest-prime-factor.component";
+import {SolutionsComponent} from "./solutions/components/solutions.component";
+import {SolutionsService} from "./solutions/services/solutions.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    MultiplesOf3And5Component,
-    EvenFibonacciNumbersComponent,
-    LargestPrimeFactorComponent
+    SolutionsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [SolutionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
