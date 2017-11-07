@@ -11,12 +11,12 @@ export class MultiplesOf3And5Component {
   solution: number;
 
   constructor() {
-    this.solution = this.findMultiples();
+    this.solution = this.findMultiples(1000);
   }
 
-  findMultiples(): number{
+  findMultiples(limit:number): number{
     let sum: number = 0;
-    for(let i = 0; i < 1000; ++i) {
+    for(let i = 0; i < limit; ++i) {
       if (i%3 == 0 || i%5 == 0){
         sum+=i;
       }
