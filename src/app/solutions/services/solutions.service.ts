@@ -6,6 +6,8 @@ import {BinaryTree} from "../models/binary-tree";
 @Injectable()
 export class SolutionsService {
 
+  // TODO: possibly find a better way to break up this soon to be large file
+
   findEvenFibonacciNumbers(limit:number): number{
     let sum: number = 0;
     let next: number = 0;

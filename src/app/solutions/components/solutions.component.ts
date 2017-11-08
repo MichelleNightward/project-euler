@@ -10,6 +10,7 @@ import {BinaryTree} from "../models/binary-tree";
 export class SolutionsComponent {
   public problemCollection = [];
   public sideProblemCollection = [];
+  // TODO: set up input fields so values being fed to methods aren't hardcoded
 
   private binaryTreeRoot1: BinaryTree = new BinaryTree(1);
 
