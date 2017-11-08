@@ -186,7 +186,7 @@ export class SolutionsService {
         // number is already sorted
         continue;
       }
-      // flip arr max element to index 0 using arrayToSort.slice(0, i+1).reverse();
+      // flip arr max element to index 0
       let pancakeGroup;
       if (largestUnsortedIndex>0) {
         pancakeGroup = arrayToSort.slice(0,largestUnsortedIndex+1).reverse();
@@ -241,12 +241,7 @@ export class SolutionsService {
    */
   isPalindrome(intToCheck: number): boolean {
     let intAsString: string = String(intToCheck);
-    for (let i=0; i < intAsString.length -1; i++) {
-      if (intAsString.charAt(i) != intAsString.charAt(intAsString.length-i-1)) {
-        return false;
-      }
-    }
-    return true;
+    return (intAsString == intAsString.split("").reverse().join(""));
   }
 
 }
