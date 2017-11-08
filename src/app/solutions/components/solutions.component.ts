@@ -21,8 +21,6 @@ export class SolutionsComponent {
     this.binaryTreeRoot1.left.right = new BinaryTree(5);
     this.binaryTreeRoot1.right.left = new BinaryTree(6);
 
-    console.log(solutionsService.findBTLowestCommonAncestor(this.binaryTreeRoot1, 2,3));
-
     this.problemCollection = [
     {"problemId": 1,
       "problemText": 'If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.'+
@@ -51,7 +49,11 @@ export class SolutionsComponent {
         "solution": solutionsService.findBTLowestCommonAncestor(this.binaryTreeRoot1, 4,5).value || "No common ancestor found."},
       {"problemId": 3,
         "problemText": 'Write a JavaScript program to sort a list of elements using Pancake sort. Given array: [3,5,2,1,3,7,9,0]',
-        "solution": solutionsService.pancakeSort([3,5,2,1,3,7,9,0])}
+        "solution": solutionsService.pancakeSort([3,5,2,1,3,7,9,0])},
+      {"problemId": 4,
+        "problemText": 'A palindromic number reads the same both ways. The largest palindrome made from the product of'+
+          ' two 2-digit numbers is 9009 = 91 × 99. Find the largest palindrome made from the product of two 3-digit numbers.',
+        "solution": solutionsService.findLargestPalindromeProduct(3)}
     ];
   }
 }

@@ -13,12 +13,12 @@ export class SolutionsService {
    *
    * @param limit
    */
-  findEvenFibonacciNumbers(limit:number): number{
+  findEvenFibonacciNumbers(limit:number): number {
     let sum: number = 0;
     let next: number = 0;
-    for(let i =0; next < limit; i++) {
+    for (let i =0; next < limit; i++) {
       next = this.fibonacciRecursive(i);
-      if (this.isEven(next)){
+      if (this.isEven(next)) {
         sum+=next;
       }
     }
@@ -30,8 +30,8 @@ export class SolutionsService {
    *
    * @param currentFib
    */
-  fibonacciRecursive(currentFib:number){
-    if(currentFib <= 2){
+  fibonacciRecursive(currentFib:number): number {
+    if (currentFib <= 2) {
       return currentFib;
     }
     return this.fibonacciRecursive(currentFib-2) + this.fibonacciRecursive(currentFib-1);
@@ -42,7 +42,7 @@ export class SolutionsService {
    *
    * @param intToCheck
    */
-  isEven(intToCheck:number):boolean{
+  isEven(intToCheck:number): boolean {
     return intToCheck%2 == 0;
   }
 
@@ -55,7 +55,7 @@ export class SolutionsService {
    *
    * @param intToCheck
    */
-  findLargestPrimeFactor(intToCheck:number): number{
+  findLargestPrimeFactor(intToCheck:number): number {
     let largest: number = intToCheck;
     let div:number = intToCheck;
     let odd:number = 3;
@@ -83,15 +83,15 @@ export class SolutionsService {
    *
    * @param intToCheck
    */
-  isPrime(intToCheck:number):boolean{
-    if (intToCheck == 1){
+  isPrime(intToCheck:number): boolean {
+    if (intToCheck == 1) {
       return true;
     }
-    if (intToCheck == 2){
+    if (intToCheck == 2) {
       return false;
     }
-    for (let i = 2; i < intToCheck; i++){
-      if(intToCheck%i == 0){
+    for (let i = 2; i < intToCheck; i++) {
+      if(intToCheck%i == 0) {
         return false;
       }
     }
@@ -103,10 +103,10 @@ export class SolutionsService {
    *
    * @param limit
    */
-  findSumOf3And5Multiples(limit:number): number{
+  findSumOf3And5Multiples(limit:number): number {
     let sum: number = 0;
-    for(let i = 0; i < limit; ++i) {
-      if (i%3 == 0 || i%5 == 0){
+    for (let i = 0; i < limit; ++i) {
+      if (i%3 == 0 || i%5 == 0) {
         sum+=i;
       }
     }
@@ -119,14 +119,14 @@ export class SolutionsService {
    *
    * @param limit
    */
-  fizzBuzz(limit:number):string{
+  fizzBuzz(limit:number): string {
     let fizzBuzzResult:string ="";
-    for (let i=1; i <= limit; i++){
+    for (let i=1; i <= limit; i++) {
       if (i%3 == 0 && i%5 == 0){
         fizzBuzzResult += "FizzBuzz ";
-      } else if (i%3 == 0){
+      } else if (i%3 == 0) {
         fizzBuzzResult += "Fizz ";
-      } else if (i%5 == 0){
+      } else if (i%5 == 0) {
         fizzBuzzResult += "Buzz ";
       } else {
         fizzBuzzResult += i.toString() + " ";
@@ -142,7 +142,7 @@ export class SolutionsService {
    * @param val1
    * @param val2
    */
-  findBTLowestCommonAncestor(root: BinaryTree, val1: number, val2: number): BinaryTree{
+  findBTLowestCommonAncestor(root: BinaryTree, val1: number, val2: number): BinaryTree {
     // If root is undefined return null.
     if (!root) {
       return null;
@@ -159,7 +159,7 @@ export class SolutionsService {
       return root;
     }
     // Else, return left if left is defined, as last resort return right regardless of whether it's defined.
-    if(left){
+    if(left) {
       return left;
     } else {
       return right;
@@ -177,30 +177,76 @@ export class SolutionsService {
       let largestUnsortedIndex = 0;
       let largestUnsortedVal = arrayToSort[0];
       for(let j = 1; j <= i; j++){
-        if(arrayToSort[j] > largestUnsortedVal){
+        if (arrayToSort[j] > largestUnsortedVal) {
           largestUnsortedVal = arrayToSort[j];
           largestUnsortedIndex = j;
         }
       }
-      if(largestUnsortedIndex == i){
+      if (largestUnsortedIndex == i) {
         // number is already sorted
         continue;
       }
       // flip arr max element to index 0 using arrayToSort.slice(0, i+1).reverse();
       let pancakeGroup;
-      if (largestUnsortedIndex>0){
+      if (largestUnsortedIndex>0) {
         pancakeGroup = arrayToSort.slice(0,largestUnsortedIndex+1).reverse();
-        for (let j=0; j <= largestUnsortedIndex; j++){
+        for (let j=0; j <= largestUnsortedIndex; j++) {
           arrayToSort[j] = pancakeGroup[j];
         }
       }
       // then flip the max element to its place
       pancakeGroup = arrayToSort.slice(0,i+1).reverse();
-      for (let j=0; j <= i; j++){
+      for (let j=0; j <= i; j++) {
         arrayToSort[j] = pancakeGroup[j];
       }
     }
     return arrayToSort
+  }
+
+  /**
+   * given a number of digits, find the largest palindrome possible by adding two numbers with provided digits.
+   *
+   * @param numOfDigits
+   */
+  findLargestPalindromeProduct(numOfDigits: number): number {
+    let maxNumber: number = this.generateHighestNumberWithGivenDigits(numOfDigits);
+    let largestPalindrome = 0;
+    for (let i=maxNumber; i >= 0; i--) {
+      for (let j=maxNumber; j >= 0; j--) {
+        if (i*j > largestPalindrome && this.isPalindrome(i*j)) {
+          largestPalindrome = i*j;
+        }
+      }
+    }
+    return largestPalindrome;
+  }
+
+  /**
+   * given a number of digits, find the largest number with that amount of digits.
+   *
+   * @param numOfDigits
+   */
+  generateHighestNumberWithGivenDigits(numOfDigits: number): number {
+    let maxNumberString: string = "1";
+    for (let i=0; i<numOfDigits; i++) {
+      maxNumberString += "0";
+    }
+    return parseInt(maxNumberString) - 1;
+  }
+
+  /**
+   * given a number, check if it's a palindrome.
+   *
+   * @param intToCheck
+   */
+  isPalindrome(intToCheck: number): boolean {
+    let intAsString: string = String(intToCheck);
+    for (let i=0; i < intAsString.length -1; i++) {
+      if (intAsString.charAt(i) != intAsString.charAt(intAsString.length-i-1)) {
+        return false;
+      }
+    }
+    return true;
   }
 
 }
