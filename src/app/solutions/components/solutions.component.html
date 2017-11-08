@@ -1,5 +1,14 @@
+<h4>Project Euler Problems</h4>
 <div class="solutions-block"
      *ngFor="let problem of problemCollection">
-  <h4 class="problem-text">{{problem.problemText}}</h4>
+  <h4 class="problem-text">Problem {{problem.problemId}}</h4>
+  <p class="solution">{{problem.problemText}}</p>
   <p class="solution">{{problem.solution}}</p>
+</div>
+<h4>Supplemental Problems</h4>
+<div class="solutions-block"
+     *ngFor="let sideProblem of sideProblemCollection">
+  <h4 class="problem-text">Problem {{sideProblem.problemId}}</h4>
+  <p class="solution">{{sideProblem.problemText}}</p>
+  <p class="solution">{{sideProblem.solution}}</p>
 </div>

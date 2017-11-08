@@ -1,4 +1,5 @@
 import {Injectable} from "@angular/core";
+import {BinaryTree} from "../models/binary-tree";
 /**
  * Created by michellenightward on 11/7/17.
  */
@@ -75,6 +76,45 @@ export class SolutionsService {
       }
     }
     return sum;
+  }
+
+  fizzBuzz(int:number):string{
+    let fizzBuzzResult:string ="";
+    for (let i=1; i <= int; i++){
+      if (i%3 == 0 && i%5 == 0){
+        fizzBuzzResult += "FizzBuzz ";
+      } else if (i%3 == 0){
+        fizzBuzzResult += "Fizz ";
+      } else if (i%5 == 0){
+        fizzBuzzResult += "Buzz ";
+      } else {
+        fizzBuzzResult += i.toString() + " ";
+      }
+    }
+    return fizzBuzzResult;
+  }
+
+  findBTLowestCommonAncestor(root: BinaryTree, val1: number, val2: number){
+    if (!root) {
+      return null;
+    }
+    if (root.value == val1 || root.value == val2) {
+      return root;
+    }
+
+    let left = this.findBTLowestCommonAncestor(root.left, val1, val2);
+    let right = this.findBTLowestCommonAncestor(root.right, val1, val2);
+
+    if (left && right) {
+      return root;
+    }
+
+    if(left){
+      return left;
+    } else {
+      return right;
+    }
+
   }
 
 }
