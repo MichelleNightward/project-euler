@@ -143,26 +143,64 @@ export class SolutionsService {
    * @param val2
    */
   findBTLowestCommonAncestor(root: BinaryTree, val1: number, val2: number): BinaryTree{
+    // If root is undefined return null.
     if (!root) {
       return null;
     }
+    // If root's value is equal to val1 or val2, return root.
     if (root.value == val1 || root.value == val2) {
       return root;
     }
-
+    // Recursively walk through left and right nodes to  check their status with provided values
     let left = this.findBTLowestCommonAncestor(root.left, val1, val2);
     let right = this.findBTLowestCommonAncestor(root.right, val1, val2);
-
+    // if both left and right have values returned through executing findBTLowestCommonAncestor, return root.
     if (left && right) {
       return root;
     }
-
+    // Else, return left if left is defined, as last resort return right regardless of whether it's defined.
     if(left){
       return left;
     } else {
       return right;
     }
+  }
 
+  /**
+   * Sorts a given array in pancake style, flipping portions of the array until it is in ascending order
+   *
+   * @param arrayToSort
+   */
+  pancakeSort(arrayToSort: Array<number>): Array<number> {
+    for (var i = arrayToSort.length - 1; i >= 1; i--) {
+      // find the index of the largest number not yet sorted
+      let largestUnsortedIndex = 0;
+      let largestUnsortedVal = arrayToSort[0];
+      for(let j = 1; j <= i; j++){
+        if(arrayToSort[j] > largestUnsortedVal){
+          largestUnsortedVal = arrayToSort[j];
+          largestUnsortedIndex = j;
+        }
+      }
+      if(largestUnsortedIndex == i){
+        // number is already sorted
+        continue;
+      }
+      // flip arr max element to index 0 using arrayToSort.slice(0, i+1).reverse();
+      let pancakeGroup;
+      if (largestUnsortedIndex>0){
+        pancakeGroup = arrayToSort.slice(0,largestUnsortedIndex+1).reverse();
+        for (let j=0; j <= largestUnsortedIndex; j++){
+          arrayToSort[j] = pancakeGroup[j];
+        }
+      }
+      // then flip the max element to its place
+      pancakeGroup = arrayToSort.slice(0,i+1).reverse();
+      for (let j=0; j <= i; j++){
+        arrayToSort[j] = pancakeGroup[j];
+      }
+    }
+    return arrayToSort
   }
 
 }

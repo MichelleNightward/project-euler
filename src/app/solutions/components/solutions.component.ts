@@ -50,8 +50,8 @@ export class SolutionsComponent {
         ' to find the least common ancestor.',
         "solution": solutionsService.findBTLowestCommonAncestor(this.binaryTreeRoot1, 4,5).value || "No common ancestor found."},
       {"problemId": 3,
-        "problemText": 'Write a JavaScript program to sort a list of elements using Pancake sort.',
-        "solution": "incomplete"}
+        "problemText": 'Write a JavaScript program to sort a list of elements using Pancake sort. Given array: [3,5,2,1,3,7,9,0]',
+        "solution": solutionsService.pancakeSort([3,5,2,1,3,7,9,0])}
     ];
   }
 }
