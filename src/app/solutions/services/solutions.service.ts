@@ -238,18 +238,12 @@ export class SolutionsService {
   }
 
   /**
-   * Checks if provided number is a prime number. This method is currently unused.
+   * Checks if provided number is a prime number. This method is currently unused. Could be implemented more efficiently.
    *
    * @param intToCheck
    */
   private isPrime(intToCheck:number): boolean {
-    if (intToCheck == 1) {
-      return true;
-    }
-    if (intToCheck == 2) {
-      return false;
-    }
-    for (let i = 2; i < intToCheck; i++) {
+    for (let i = 1; i < intToCheck; i++) {
       if(intToCheck%i == 0) {
         return false;
       }
