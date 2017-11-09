@@ -34,7 +34,15 @@ export class SolutionsComponent {
     {"problemId": 3,
       "problemText": 'The prime factors of 13195 are 5, 7, 13 and 29. What is the largest prime factor of the number'+
         ' 600851475143?',
-      "solution": solutionsService.findLargestPrimeFactor(600851475143)}
+      "solution": solutionsService.findLargestPrimeFactor(600851475143)},
+    {"problemId": 4,
+      "problemText": 'A palindromic number reads the same both ways. The largest palindrome made from the product of'+
+        ' two 2-digit numbers is 9009 = 91 × 99. Find the largest palindrome made from the product of two 3-digit numbers.',
+      "solution": solutionsService.findLargestPalindromeProduct(3)},
+    {"problemId": 5,
+      "problemText": '2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any'+
+        ' remainder. What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?',
+      "solution": solutionsService.findSmallestNumberDivisibleByRange(20)}
     ];
     this.sideProblemCollection = [
       {"problemId": 1,
@@ -49,11 +57,7 @@ export class SolutionsComponent {
         "solution": solutionsService.findBTLowestCommonAncestor(this.binaryTreeRoot1, 4,5).value || "No common ancestor found."},
       {"problemId": 3,
         "problemText": 'Write a JavaScript program to sort a list of elements using Pancake sort. Given array: [3,5,2,1,3,7,9,0]',
-        "solution": solutionsService.pancakeSort([3,5,2,1,3,7,9,0])},
-      {"problemId": 4,
-        "problemText": 'A palindromic number reads the same both ways. The largest palindrome made from the product of'+
-          ' two 2-digit numbers is 9009 = 91 × 99. Find the largest palindrome made from the product of two 3-digit numbers.',
-        "solution": solutionsService.findLargestPalindromeProduct(3)}
+        "solution": solutionsService.pancakeSort([3,5,2,1,3,7,9,0])}
     ];
   }
 }

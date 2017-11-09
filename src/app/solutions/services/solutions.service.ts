@@ -26,27 +26,6 @@ export class SolutionsService {
   }
 
   /**
-   * Finds next fibonacci number in a sequence given the current number.
-   *
-   * @param currentFib
-   */
-  fibonacciRecursive(currentFib:number): number {
-    if (currentFib <= 2) {
-      return currentFib;
-    }
-    return this.fibonacciRecursive(currentFib-2) + this.fibonacciRecursive(currentFib-1);
-  }
-
-  /**
-   * Checks whether number is even
-   *
-   * @param intToCheck
-   */
-  isEven(intToCheck:number): boolean {
-    return intToCheck%2 == 0;
-  }
-
-  /**
    * Finds the largest prime factor to a given number.
    *
    * There are several ways to do this, and this originally used isPrime() to solve
@@ -76,26 +55,6 @@ export class SolutionsService {
     //   }
     // }
     return largest;
-  }
-
-  /**
-   * Checks if provided number is a prime number. This method is currently unused.
-   *
-   * @param intToCheck
-   */
-  isPrime(intToCheck:number): boolean {
-    if (intToCheck == 1) {
-      return true;
-    }
-    if (intToCheck == 2) {
-      return false;
-    }
-    for (let i = 2; i < intToCheck; i++) {
-      if(intToCheck%i == 0) {
-        return false;
-      }
-    }
-    return true;
   }
 
   /**
@@ -235,13 +194,76 @@ export class SolutionsService {
   }
 
   /**
+   * given a number, find smallest number that is divisible by provided number and all numbers smaller than it.
+   * TODO: optimize this, its not the most efficient way to do this I dont think.
+   *
+   * @param rangeLimit
+   */
+  findSmallestNumberDivisibleByRange(rangeLimit: number): number {
+    for (let i = rangeLimit; i <= Number.MAX_VALUE; i++) {
+      for (let j=2; j <= rangeLimit; j++) {
+        if (i%j != 0){
+          break;
+        }
+        if (j == rangeLimit && i%j == 0) {
+          return i;
+        }
+      }
+    }
+  }
+
+  /**
+  * Private methods
+  */
+
+  /**
+   * Finds next fibonacci number in a sequence given the current number.
+   *
+   * @param currentFib
+   */
+  private fibonacciRecursive(currentFib:number): number {
+    if (currentFib <= 2) {
+      return currentFib;
+    }
+    return this.fibonacciRecursive(currentFib-2) + this.fibonacciRecursive(currentFib-1);
+  }
+
+  /**
+   * Checks whether number is even
+   *
+   * @param intToCheck
+   */
+  private isEven(intToCheck:number): boolean {
+    return intToCheck%2 == 0;
+  }
+
+  /**
+   * Checks if provided number is a prime number. This method is currently unused.
+   *
+   * @param intToCheck
+   */
+  private isPrime(intToCheck:number): boolean {
+    if (intToCheck == 1) {
+      return true;
+    }
+    if (intToCheck == 2) {
+      return false;
+    }
+    for (let i = 2; i < intToCheck; i++) {
+      if(intToCheck%i == 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
    * given a number, check if it's a palindrome.
    *
    * @param intToCheck
    */
-  isPalindrome(intToCheck: number): boolean {
+  private isPalindrome(intToCheck: number): boolean {
     let intAsString: string = String(intToCheck);
     return (intAsString == intAsString.split("").reverse().join(""));
   }
-
 }
